@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0e1015;
+  color: #e0e0e0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+nav {
+  background-color: #1e1e1e;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+nav a {
+  color: #90caf9;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px; /* curved box shape */
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+nav a:hover {
+  color: #ffffff;
+  font-style: italic; /* italic on hover */
+  background-color: #333; /* curved box background */
+}
+
+
+h1 {
+  color: #00bcd4;
+}
+
+a {
+  color: #80cbc4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+.landing {
+  background-color: #0f0f0f;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered {
+  text-align: center;
+}
+
+.enter-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #00bcd4;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.enter-btn:hover {
+  background-color: #0288d1;
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects | Aaradhya</title>
+  <style>
+     body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0e001f;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+
+   nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 12px 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px 12px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      font-style: italic;
+      font-family: 'Cursive', 'Monotype Corsiva', serif;
+      border: 1px solid #aaa;
+      border-radius: 8px;
+      font-weight: 300;
+    }
+
+    .container {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+    }
+
+    .project {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.7s ease;
+    }
+
+    .project:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .project.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      margin: 0 20px;
+    }
+
+    .project-content {
+      max-width: 600px;
+    }
+
+    .project-content h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #00f2ff;
+    }
+
+    .project-content p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .skills {
+      margin-top: 15px;
+    }
+
+    .skills img {
+      height: 30px;
+      width: auto;
+      margin-right: 10px;
+      vertical-align: middle;
+      transition: transform 0.2s;
+    }
+
+    .skills img:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html">Index</a>
+  </nav>
+
+  <div class="container">
+    <h1>Projects</h1>
+
+    <div class="project">
+      <img src="miner.gif" alt="Minesweeper demo">
+      <div class="project-content">
+        <h2>Minesweeper (Java CLI)</h2>
+        <p> Terminal-Based Minesweeper (Java)</p>
+        <p>A command-line version of the classic Minesweeper game created entirely in Java. Developed in Class 11, this project focuses on logic implementation and game mechanics using pure Java without any GUI frameworks.</p>
+        <p>Role: Solo developer</p>
+        <p>Technologies: Java</p>
+        <div class="skills">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java">
+          <img src="https://www.svgrepo.com/show/448988/command-line.svg" alt="Command Line" title="Command Line Interface">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="volume.gif" alt="Gesture Volume Control demo">
+      <div class="project-content">
+        <h2>Hand Gesture-Based Volume Control</h2>
+        <p>. Volume Control Using Hand Gestures</p>
+        <p> computer vision project that allows users to control system volume using hand gestures detected through a webcam. The project tracks the distance between specific fingers (thumb and index) to increase or decrease volume, providing a touchless user interface.</p>
+        <p>Role: Solo developer</p>
+        <p>Technologies: Python, OpenCV, MediaPipe, pycaw (Windows Audio Control)</p>
+        <p>Key Features:</p>
+        <p>Real-time hand tracking</p>
+        <p>Smooth gesture-to-volume mapping</p>
+        <p>Visual feedback with on-screen volume bar</p>
+        <div class="skills">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" alt="OpenCV" title="OpenCV" />
+          <img src="mediapipe.png" alt="MediaPipe" title="MediaPipe">
+
+
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="controller.gif" alt="ESPWizard demo">
+      <div class="project-content">
+        <h2>ESPWizard – Smart Remote</h2>
+        <p>ESPWizard – Smart ESP32 Remote App</p>
+        <p>A React Native-based mobile application that acts as a universal remote for ESP32-powered devices. The app dynamically adapts its interface depending on the selected device type, ensuring a tailored user experience. Additionally, it streams live camera feed from the bot to the app, enabling real-time monitoring and control.</p>
+        <p>Role: Lead developer for UI and communication protocols</p>
+        <p>Technologies: React Native, JavaScript, TCP/IP, UDP</p>
+        <p>Key Features:</p>
+        <p>Auto-customized UI for each device</p>
+        <p>Real-time command execution</p>
+        <p>Live camera streaming</p>
+        <p>Outcome: Final-year robotics project praised for its flexibility and seamless hardware-software integration.</p>
+        <div class="skills">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React.js" title="React.js">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript">
+          <img src="https://img.icons8.com/color/48/000000/data-in-both-directions.png" alt="UDP" title="UDP Protocol">
+          <img src="https://img.icons8.com/color/48/000000/network-card.png" alt="TCP/IP" title="TCP/IP Protocol">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const projects = document.querySelectorAll('.project');
+    const onScroll = () => {
+      projects.forEach(project => {
+        const rect = project.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          project.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+     window.addEventListener("DOMContentLoaded", () => {
+    const hoverSound = document.getElementById("hoverSound");
+    const clickSound = document.getElementById("clickSound");
+
+    hoverSound.volume = 0.3;
+    clickSound.volume = 0.3;
+
+    
+    const interactiveEls = document.querySelectorAll("a, button, .clickable, .nav-link, .icon, .skill-item");
+
+    interactiveEls.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(e => console.log("Hover sound blocked:", e));
+      });
+
+      el.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play().catch(e => console.log("Click sound blocked:", e));
+      });
+    });
+  });
+
+  </script>
+</body>
+<audio id="hoverSound" src="sounds/hover.mp3" preload="auto"></audio>
+<audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+</html>
+

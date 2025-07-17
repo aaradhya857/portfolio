@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome | Aaradhya</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  body.landing {
+  background: radial-gradient(ellipse at center, #0d0d0d 0%, #050505 100%);
+  color: white;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 1s ease-in-out;
+}
+
+
+    .face-container {
+      position: relative;
+      width: 300px;
+      height: auto;
+      margin-bottom: 0;   
+      padding-bottom: 0; 
+      display: block;
+    }
+
+    .face-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 0;
+    }
+
+.eye {
+  width: 70px;
+  height: 70px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.eye.glow {
+  box-shadow: 0 0 40px #ff69b4, 0 0 80px #ff69b4;
+}
+
+.pupil {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #000;
+  transition: transform 0.05s linear, all 0.2s ease;
+}
+
+/* Heart shape directly in the pupil on hover */
+body.hovering .pupil {
+  background: red;
+  transform: rotate(0deg); /* reset any mouse movement rotation */
+  border-radius: 0;
+}
+
+body.hovering .pupil::before,
+body.hovering .pupil::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+}
+
+body.hovering .pupil {
+  width: 30px;
+  height: 30px;
+  transform: rotate(-45deg);
+}
+
+body.hovering .pupil::before {
+  top: -15px;
+  left: 0;
+}
+
+body.hovering .pupil::after {
+  top: 0;
+  left: 15px;
+}
+
+
+
+    .centered {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+
+
+
+    .centered h1 {
+      color: #00bcd4;
+      font-size: 2.2rem;
+      margin-bottom: 0px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .enter-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background-color: #00bcd4;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .enter-btn:hover {
+      background-color: #0288d1;
+    }
+    
+
+  body.landing {
+   background: #56e75e;
+    color: #111;
+    transition: background 1s ease-in-out;
+  }
+
+.entry-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body.entering .entry-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.access-text {
+  color: #00ffcc;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #00ffcc;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #00ffcc; }
+}
+
+
+  
+
+  .entry-overlay.show .access-text{
+    animation: accessFade 2s ease forwards;
+  }
+  body.entering .entry-overlay {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @keyframes accessFade {
+    0% { opacity: 0; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.1); }
+  }
+
+
+  </style>
+</head>
+<body class="landing">
+<div id="entryOverlay" class="entry-overlay">
+  <div class="access-text"><span id="accessText"></span></div>
+</div>
+
+  <div class="face-container">
+    <img src="face.png" alt="Character Face">
+    
+
+
+    <div class="eye" id="eye1" style="top: 60px; left: 65px;">
+      <div class="pupil"></div>
+    </div>
+    <div class="eye" id="eye2" style="top: 60px; left: 165px;">
+      <div class="pupil"></div>
+    </div>
+  </div>
+
+  <div class="centered">
+    <h1>Welcome to Aaradhya's Portfolio</h1>
+    <a href="home.html" class="enter-btn" id="enterBtn">Enter</a>
+  </div>
+
+  <script>
+  const eyes = document.querySelectorAll('.eye');
+  const enterBtn = document.getElementById('enterBtn');
+  const body = document.body;
+
+  document.addEventListener('mousemove', (e) => {
+    eyes.forEach(eye => {
+      const pupil = eye.querySelector('.pupil');
+      const rect = eye.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
+      const x = Math.cos(angle) * 15; // increased distance to make it snappier
+      const y = Math.sin(angle) * 15;
+      
+      // If hovering, combine translate with rotation
+      if (body.classList.contains('hovering')) {
+        pupil.style.transform = `translate(${x}px, ${y}px) rotate(-45deg)`;
+      } else {
+        pupil.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    });
+  });
+
+  enterBtn.addEventListener('mouseover', () => {
+    eyes.forEach(eye => eye.classList.add('glow'));
+    body.classList.add('hovering');
+  });
+
+  enterBtn.addEventListener('mouseout', () => {
+    eyes.forEach(eye => eye.classList.remove('glow'));
+    body.classList.remove('hovering');
+  });
+ enterBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  body.classList.add('entering');
+
+  const overlay = document.getElementById('entryOverlay');
+  const accessText = document.getElementById('accessText');
+
+  overlay.classList.add('show');
+
+  // Typing effect for "Access Granted"
+  const fullText = "Access Granted";
+  let i = 0;
+
+  const typingInterval = setInterval(() => {
+    accessText.textContent += fullText[i];
+    i++;
+    if (i === fullText.length) {
+      clearInterval(typingInterval);
+
+      // After typing finishes, wait a moment and redirect
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 700);
+    }
+  }, 80); // typing speed
+});
+ window.addEventListener("DOMContentLoaded", () => {
+    const hoverSound = document.getElementById("hoverSound");
+    const clickSound = document.getElementById("clickSound");
+
+    hoverSound.volume = 0.3;
+    clickSound.volume = 0.3;
+
+    
+    const interactiveEls = document.querySelectorAll("a, button, .clickable, .nav-link, .icon, .skill-item");
+
+    interactiveEls.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play().catch(e => console.log("Hover sound blocked:", e));
+      });
+
+      el.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play().catch(e => console.log("Click sound blocked:", e));
+      });
+    });
+  });
+
+
+
+</script>
+
+
+</body>
+<audio id="hoverSound" src="sounds/hover.mp3" preload="auto"></audio>
+<audio id="clickSound" src="sounds/click.mp3" preload="auto"></audio>
+</html>
+
